@@ -75,3 +75,6 @@ debian/reproducible-experiment-platform
 debian/files
 *.substvars
 *.debhelper.log
+
+week01_intro/__pycache__/
+week01_intro/videos/
