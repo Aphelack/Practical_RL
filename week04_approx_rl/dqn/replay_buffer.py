@@ -32,20 +32,20 @@ class ReplayBuffer(object):
     def _encode_sample(self, idxes):
         obses_t, actions, rewards, obses_tp1, dones = [], [], [], [], []
         for i in idxes:
-            data = self._storage[i]
-            obs_t, action, reward, obs_tp1, done = data
-            obses_t.append(np.array(obs_t, copy=False))
-            actions.append(np.array(action, copy=False))
+            obs_t, action, reward, obs_tp1, done = self._storage[i]
+            obses_t.append(np.asarray(obs_t))      # можно и np.array(obs_t)
+            actions.append(np.asarray(action))
             rewards.append(reward)
-            obses_tp1.append(np.array(obs_tp1, copy=False))
+            obses_tp1.append(np.asarray(obs_tp1))
             dones.append(done)
         return (
-            np.array(obses_t),
-            np.array(actions),
-            np.array(rewards),
-            np.array(obses_tp1),
-            np.array(dones),
+            np.asarray(obses_t),
+            np.asarray(actions),
+            np.asarray(rewards),
+            np.asarray(obses_tp1),
+            np.asarray(dones),
         )
+
 
     def sample(self, batch_size):
         """Sample a batch of experiences.
