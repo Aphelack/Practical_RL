@@ -78,3 +78,5 @@ debian/files
 
 week01_intro/__pycache__/
 week01_intro/videos/
+
+**/.venv/*
